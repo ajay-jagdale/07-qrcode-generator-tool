@@ -1,11 +1,44 @@
+import { useState } from 'react';
+import QRCode from 'qrcode.react';
+
 const QRCodeGenerator = () => {
+    const [inputText, setInputText] = useState('');
+    const [qrValue, setQRValue] = useState('');
+
+    const generateQRCode = () => {
+        setQRValue(inputText);
+    };
 
     return (
-        <header className={`fixed top-0 left-0 w-full z-10 bg-[rgb(30,64,175)] text-white rounded-b-[15px] max-h-16`}>
-            <div className="p-2 md:p-3 lg:p-4 text-center">
-                <a href="/" className="text-xl font-bold mb-2 text-white">QR Code Generator</a>
+        <div className="p-4 max-w-5xl mx-auto mt-[70px] mb-36">
+            <div className="flex flex-row gap-2">
+                <input
+                    type="text"
+                    id="default-input"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="Enter text or URL"
+                    value={inputText}
+                    onChange={(e) => setInputText(e.target.value)}
+                />
+                <button
+                    onClick={generateQRCode}
+                    className="p-4 rounded flex items-center justify-center h-12"
+                >
+                    <i className="bi bi-arrow-right-circle-fill text-3xl" style={{ color: '#1e40af' }}></i>
+                </button>
             </div>
-        </header>
+            {qrValue && (
+                <QRCode
+                    value={qrValue}
+                    className="shadow-lg mt-4"
+                    size={256}
+                    bgColor={"#ffffff"}
+                    fgColor={"#000000"}
+                    level={"Q"}
+                    includeMargin={true}
+                />
+            )}
+        </div>
     );
 };
 
