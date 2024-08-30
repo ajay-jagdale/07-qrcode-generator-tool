@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import QRCode from 'qrcode.react';
+import { QRCode } from 'qrcode.react';
 
 const QRCodeGenerator = () => {
     const [inputText, setInputText] = useState('');
