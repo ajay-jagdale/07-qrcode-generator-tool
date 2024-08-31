@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { QRCode } from 'react-qr-code';
+import QRCode from 'react-qr-code';
 
 const QRCodeGenerator = () => {
     const [inputText, setInputText] = useState('');
@@ -28,15 +28,16 @@ const QRCodeGenerator = () => {
                 </button>
             </div>
             {qrValue && (
-                <QRCode
-                    value={qrValue}
-                    className="shadow-lg mt-4"
-                    size={256}
-                    bgColor={"#ffffff"}
-                    fgColor={"#000000"}
-                    level={"Q"}
-                    includeMargin={true}
-                />
+                <div className="flex justify-center mt-11">
+                    <QRCode
+                        value={qrValue}
+                        size={256}
+                        bgColor={"#ffffff"}
+                        fgColor={"#000000"}
+                        level={"Q"}
+                        includeMargin={true}
+                    />
+                </div>
             )}
         </div>
     );
